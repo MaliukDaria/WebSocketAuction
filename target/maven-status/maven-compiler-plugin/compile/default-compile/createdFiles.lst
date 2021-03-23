@@ -1,0 +1,8 @@
+config\MyWebAppInitializer.class
+config\WebConfig.class
+entity\OutputMessage.class
+controller\WebSocketController.class
+config\WebSocketConfig.class
+entity\Message.class
+controller\TestController.class
+config\AppConfig.class
