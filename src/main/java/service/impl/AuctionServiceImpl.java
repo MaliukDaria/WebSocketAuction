@@ -1,6 +1,7 @@
 package service.impl;
 
 import entity.Auction;
+import entity.Bid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.AuctionRepository;
@@ -28,5 +29,12 @@ public class AuctionServiceImpl implements AuctionService {
     @Override
     public Auction update(Auction auction) {
         return auctionRepository.update(auction);
+    }
+
+    @Override
+    public Auction makeBid(Long auctionId, Bid bid) {
+        Auction auction = get(auctionId);
+        auction.getBids().add(bid);
+        return auction;
     }
 }

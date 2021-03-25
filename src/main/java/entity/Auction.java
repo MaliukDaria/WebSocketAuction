@@ -1,11 +1,16 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Auction {
     private Long id;
     private Product product;
-    private List<Bet> bets;
+    private List<Bid> bids;
+
+    {
+        bids = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
@@ -23,11 +28,11 @@ public class Auction {
         this.product = product;
     }
 
-    public List<Bet> getBets() {
-        return bets;
+    public List<Bid> getBids() {
+        return bids;
     }
 
-    public void setBets(List<Bet> bets) {
-        this.bets = bets;
+    public void setBids(List<Bid> bids) {
+        this.bids = bids;
     }
 }
