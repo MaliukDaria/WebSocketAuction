@@ -15,19 +15,19 @@
         }
 
         function connect() {
-            var socket = new SockJS('/chat');
+            var socket = new SockJS('/websocket/api/chat');
             stompClient = Stomp.over(socket);
-            stompClient.connect({}, function(frame) {
+            stompClient.connect({}, function (frame) {
                 setConnected(true);
                 console.log('Connected: ' + frame);
-                stompClient.subscribe('/topic/messages', function(messageOutput) {
+                stompClient.subscribe('/topic/messages', function (messageOutput) {
                     showMessageOutput(JSON.parse(messageOutput.body));
                 });
             });
         }
 
         function disconnect() {
-            if(stompClient != null) {
+            if (stompClient != null) {
                 stompClient.disconnect();
             }
             setConnected(false);
@@ -37,8 +37,8 @@
         function sendMessage() {
             var from = document.getElementById('from').value;
             var text = document.getElementById('text').value;
-            stompClient.send("/app/chat", {},
-                JSON.stringify({'from':from, 'text':text}));
+            stompClient.send("/app/websocket/api/chat", {},
+                JSON.stringify({'from': from, 'text': text}));
         }
 
         function showMessageOutput(messageOutput) {
@@ -56,14 +56,14 @@
     <div>
         <input type="text" id="from" placeholder="Choose a nickname"/>
     </div>
-    <br />
+    <br/>
     <div>
         <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">
             Disconnect
         </button>
     </div>
-    <br />
+    <br/>
     <div id="conversationDiv">
         <input type="text" id="text" placeholder="Write a message..."/>
         <button id="sendMessage" onclick="sendMessage();">Send</button>

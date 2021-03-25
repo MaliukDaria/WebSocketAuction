@@ -15,7 +15,7 @@
         }
 
         function connect() {
-            var socket = new SockJS('/chat');
+            var socket = new SockJS('/websocket/api/chat');
             stompClient = Stomp.over(socket);
             stompClient.connect({}, function(frame) {
                 setConnected(true);
@@ -37,7 +37,7 @@
         function sendMessage() {
             var from = document.getElementById('from').value;
             var text = document.getElementById('text').value;
-            stompClient.send("/app/chat", {},
+            stompClient.send("/app/websocket/api/chat", {},
                 JSON.stringify({'from':from, 'text':text}));
         }
 
