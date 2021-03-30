@@ -27,7 +27,7 @@ public class AuctionRepositoryImpl implements AuctionRepository {
     public Auction update(Auction auction) {
         Auction auctionFromStorage = get(auction.getId());
         auctionFromStorage.setProduct(auction.getProduct());
-        auctionFromStorage.setBets(auction.getBets());
+        auctionFromStorage.setBids(auction.getBids());
         return auctionFromStorage;
     }
 }
